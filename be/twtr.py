@@ -31,8 +31,8 @@ import jwt
 g = dict()
 
 # mongo
-mongo_client = MongoClient('mongodb://localhost:27017/')
-#mongo_client = MongoClient("mongodb+srv://admin:admin@tweets.8ugzv.mongodb.net/tweets?retryWrites=true&w=majority")
+#mongo_client = MongoClient('mongodb://localhost:27017/')
+mongo_client = MongoClient("mongodb+srv://admin:admin@tweets.8ugzv.mongodb.net/tweets?retryWrites=true&w=majority")
 
 app = Flask(__name__)
 CORS(app)
@@ -167,6 +167,7 @@ def login():
             userid = get_env_var('userids')[get_env_var('users').index(user)]
             access_token = encode_token(userid, "access")
             refresh_token = encode_token(userid, "refresh")
+            print('type(access_token):', type(access_token))
             response_object = {
                 "access_token": access_token.decode(),
                 "refresh_token": refresh_token.decode(),
