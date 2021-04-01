@@ -32,7 +32,7 @@ g = dict()
 
 # mongo
 #mongo_client = MongoClient('mongodb://localhost:27017/')
-mongo_client = MongoClient("mongodb+srv://admin:admin@tweets.8ugzv.mongodb.net/tweets?retryWrites=true&w=majority")
+mongo_client = MongoClient("mongodb+srv://test:test@tweets.hclbd.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
 
 app = Flask(__name__)
 CORS(app)
@@ -108,8 +108,21 @@ def decode_token(token):
 ####################
 # Security Endpoints
 ####################
-@app.route("/doc")
+@app.route("/")
 def home(): 
+    return """Welcome to online mongo/twitter testing ground!<br />
+        <br />
+        Run the following endpoints:<br />
+        From collection:<br/>
+        http://localhost:5000/tweets<br />
+        http://localhost:5000/tweets-week<br />
+        http://localhost:5000/tweets-week-results<br />
+        Create new data:<br />
+        http://localhost:5000/mock-tweets<br />
+        Optionally, to purge database: http://localhost:5000/purge-db"""
+
+@app.route("/doc")
+def doc(): 
     return """Welcome to online mongo/twitter testing ground!<br />
         <br />
         Run the following endpoints:<br />
@@ -272,7 +285,7 @@ def atlas_connect():
     # });
 
     # Python
-    client = pymongo.MongoClient("mongodb+srv://admin:<password>@tweets.8ugzv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+    client = pymongo.MongoClient("mongodb+srv://test:test@tweets.hclbd.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
     db = client.test
 
 
