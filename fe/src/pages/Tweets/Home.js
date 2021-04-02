@@ -12,14 +12,14 @@ const THome = () => {
       //const res = await fetch("http://localhost:5000/tweets-results");
       //const res = await fetch(`${process.env.REACT_APP_BE_NETWORK}:${process.env.REACT_APP_BE_PORT}/tweets-results`);
       //const res = await fetch(`${process.env.REACT_APP_API_SERVICE_URL}/tweets-results`);
-      const res = await fetch("http://flask-react-alb-1438004717.us-east-1.elb.amazonaws.com/tweet", config);
+      const res = await fetch("http://flask-react-alb-1438004717.us-east-1.elb.amazonaws.com/tweets-results");
       const { results } = await res.json();
       console.log(results);
       setTweets([...results]);
 	    setLoading(false);
     };
  
-    print("Home.js: fetching from " + `${process.env.REACT_APP_API_SERVICE_URL}/tweets-results`)
+    //print("Home.js: fetching from " + `${process.env.REACT_APP_API_SERVICE_URL}/tweets-results`)
     fetchData();
   }, []);
 
