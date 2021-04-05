@@ -183,8 +183,8 @@ def login():
             refresh_token = encode_token(userid, "refresh")
             print('type(access_token):', type(access_token))
             response_object = {
-         #       "access_token": access_token.decode(),
-         #       "refresh_token": refresh_token.decode(),
+                "access_token": access_token,
+                "refresh_token": refresh_token,
             }
             #return response_object, 200
             #return response_object
